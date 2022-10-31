@@ -61,6 +61,20 @@ module.exports = plop => {
         pattern: `/* PLOP_INJECT_EXPORT */`,
         template: `\t{{pascalCase name}},`,
       },
+      {
+        type: 'append',
+        path: 'src/App.js',
+        pattern: `/* PLOP_INJECT_IMPORT_TAB */`,
+        template: `import {{pascalCase name}} from '../src/components/{{pascalCase name}}/index.js';`,
+      },
+      {
+        type: 'append',
+        path: 'src/App.js',
+        pattern: `{/* PLOP_INJECT_TAB */}`,
+        template: `\t<Tab eventKey="{{lowerCase name}}" title="{{titleCase name}}">
+       <{{properCase name}}></{{properCase name}}>
+      </Tab>`,
+      },
     ],
   })
 
